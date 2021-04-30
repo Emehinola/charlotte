@@ -1,0 +1,358 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+    Home &mdash; Articles, love, relationship, foods, nutrition, health,
+    sports, entertainment, religion
+  </title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500" />
+  <link rel="stylesheet" href="{% static 'index/fonts/icomoon/style.css' %}" />
+
+  <link rel="stylesheet" href="{% static 'index/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'index/css/magnific-popup.css' %}" />
+  <link rel="stylesheet" href="{% static 'index/css/jquery-ui.css' %}" />
+  <link rel="stylesheet" href="{% static 'index/css/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'index/css/owl.theme.default.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'index/css/bootstrap-datepicker.css' %}" />
+  <link rel="stylesheet" href="{% static 'index/css/animate.css' %}" />
+
+  <link rel="stylesheet" href="{% static 'index/fonts/flaticon/font/flaticon.css' %}" />
+  <link rel="stylesheet" href="{% static 'index/css/fl-bigmug-line.css' %}" />
+
+  <link rel="stylesheet" href="{% static 'index/css/aos.css' %}" />
+
+  <link rel="stylesheet" href="{%  static 'index/css/style.css' %}" />
+</head>
+
+<body>
+  <div class="site-wrap">
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    <!-- .site-mobile-menu -->
+
+    <header class="site-navbar py-1" role="banner">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-6 col-xl-2">
+            <h1 class="mb-0">
+              <a href="{% url 'home' %}" class="text-black h2"
+                style="background-color: cornflowerblue; padding: 2px; border-radius: 12px;">C-<strong
+                  style="color: white;">Xpress</strong></a>
+            </h1>
+          </div>
+
+          <div class="col-10 col-xl-10 d-none d-xl-block">
+            <nav class="site-navigation text-right" role="navigation">
+              <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                <li class="has-children">
+                  <a href="category.html">Category</a>
+                  <ul class="dropdown">
+                    {% for raw, category in categories %}
+                    <li><a href="/category/?q={{raw}}">{{category}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                <li><a href="{% url 'articles' %}">Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li>
+                  <a href="/admin/blog/article/add/"><span class="rounded bg-primary py-2 px-3 text-white"><span
+                        class="h5 mr-2">+</span> Add article</span></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="col-6 col-xl-2 text-right d-block">
+            <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px">
+              <a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="unit-5 overlay" style="background-image: url({% static 'index/images/art-bg.jpeg' %})">
+      <div class="container text-center">
+        <h2 class="mb-0">Articles</h2>
+        <p class="mb-0 unit-6">
+          <a href="/category/?q=food" class="text-u">Foods & Nutrition</a> | <a href="/category/?q=love"
+            class="text-u">Love & Relationship</a> |
+          <a href="/category/?q=sports" class="text-u">Sports</a> |
+          <a href="/category/?q=fitness" class="text-u">Fitness</a> | <a href="/category/?q=entertainment"
+            class="text-u">Entertainment</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="post-header text-center p-3 bg-dark text-white">
+      Want Your Own <span class="text-u">Blog</span> or <span class="text-u">E-commerce</span> Webiste? <a
+        href="#">Contact us here</a> |
+      <a href="#" class="text-u">Online Form Registration</a> | <a href="#" class="text-u">Delivery Request</a> | <a
+        href="#" class="text-u">Buy/Sell</a> |
+      <a href="#" class="text-u">Cleaning Service</a> | <a href="#" class="text-u">Catering Service</a>
+      <!-- Here @ dailyTaste, we enrich you with daily and legit updates on latest happenings, cooking gists, love and
+      relationship tips, counselling, quotes and many more -->
+    </div>
+
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="row justify-content-start text-left mb-5">
+          <div class="col-md-9">
+            <span class="text-gray-500">Category</span>
+            <h2 class="font-weight-bold text-black">Sections</h2>
+          </div>
+          <div class="col-md-3" data-aos="" data-aos-delay="200">
+            <div class="select-wrap mr-auto">
+              <span class="icon-keyboard_arrow_down arrow-down"></span>
+              <select name="" id="category-select" class="form-control" onchange="getCategory()">
+                <option value="" selected>Select a category</option>
+                {% for raw, category in categories %}
+                <option value="{{raw}}"><a href="/category/q={{raw}}">{{category}}</a></option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          {% for article in articles %}
+          <div class="col-md-6 mb-lg-4 col-lg-6 d-none d-lg-block" data-aos="">
+            <div class="position-relative unit-8">
+              <div class="row">
+                <div class="col-5">
+                  <a href="/articles/{{article.link_title}}" class="mb-3 d-block img-a"><img src="{{article.image.url}}"
+                      alt="Image" class="img-fluid rounded" /></a>
+                </div>
+                {% comment %} <span class="d-block text-gray-500 text-normal small mb-3">By <a
+                    href="#">{{article.author}}</a>
+                  <span class="mx-2">&bullet;</span> {{article.time}}</span> {% endcomment %}
+                <div class="col-7">
+                  <h2 class="h6 font-weihgt-normal line-height-sm mb-3">
+                    <a href="/articles/{{article.link_title}}" class="text-black">{{article.title}}</a>
+                    <br>
+                    <sppan style="font-size: 12px;">{{article.time}}</span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <!-- for small screen only -->
+        <div class="row d-lg-none">
+          {% for article in articles %}
+          <div class="col-md-6 mb-lg-4 col-lg-3" data-aos="">
+            <div class="position-relative unit-8">
+              <div class="row">
+                <div class="col-5">
+                  <a href="/articles/{{article.link_title}}" class="mb-3 d-block img-a"><img src="{{article.image.url}}"
+                      alt="Image" class="img-fluid rounded" /></a>
+                </div>
+                {% comment %} <span class="d-block text-gray-500 text-normal small mb-3">By <a
+                    href="#">{{article.author}}</a>
+                  <span class="mx-2">&bullet;</span> {{article.time}}</span> {% endcomment %}
+                <div class="col-7">
+                  <h2 class="h6 font-weihgt-normal line-height-sm mb-3">
+                    <a href="/articles/{{article.link_title}}" class="text-black">{{article.title}}</a>
+                    <br>
+                    <sppan style="font-size: 12px;">{{article.time}}</span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        {% if is_paginated %}
+        <div class="row mt-5">
+          <div class="col-md-12 text-center">
+            <div class="site-block-27">
+              <ul>
+                {% if page_obj.has_previous %}
+                <li>
+                  <a href="?page={{page_obj.previois_page_number}}"><i class="icon-keyboard_arrow_left h5"></i></a>
+                </li>
+                {% endif %}
+                {% for i in paginator.page_range %}
+                {% if page_obj.number == i %}<li class="active"><span>{{i}}</span></li>
+                {% else %}<li><a href="?page={{i}}">{{i}}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <li>
+                  <a href="?page={{page_obj.next_page_number}}"><i class="icon-keyboard_arrow_right h5"></i></a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="row justify-content-start text-left mb-5">
+          <div class="col-md-9" data-aos="">
+            <span class="text-gray-500">Trending articles</span>
+            <h2 class="font-weight-bold text-black">Must read articles</h2>
+          </div>
+        </div>
+
+        <div class="row">
+          {% for article in must_read %}
+          <div class="col-md-6 mb-lg-4 col-lg-3" data-aos="">
+            <div class="position-relative unit-8">
+              <div class="row">
+                <div class="col-5">
+                  <a href="/articles/{{article.link_title}}" class="mb-3 d-block img-a"><img src="{{article.image.url}}"
+                      alt="Image" class="img-fluid rounded" /></a>
+                </div>
+                {% comment %} <span class="d-block text-gray-500 text-normal small mb-3">By <a
+                    href="#">{{article.author}}</a>
+                  <span class="mx-2">&bullet;</span> {{article.time}}</span> {% endcomment %}
+                <div class="col-7">
+                  <h2 class="h6 font-weihgt-normal line-height-sm mb-3">
+                    <a href="/articles/{{article.link_title}}" class="text-black">{{article.title|truncatechars:50}}</a>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+
+    <div class="py-5 bg-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="text-white h4 font-weihgt-normal mb-4">
+              Contact me
+            </h2>
+          </div>
+        </div>
+        <form action="" class="row">
+          {% comment %} <div class="col-md-9">
+            <input type="text" class="form-control border-0 mb-3 mb-md-0" placeholder="Enter Your Email" disabled />
+          </div> {% endcomment %}
+          <div class="col-md-3">
+            <a href="https:wa.me/+2348096747040/?text=Hi" class="btn btn-dark btn-block"
+              style="height: 45px; color: white"><i class="icon-whatsapp" style="color: green" aria-hidden="true"></i>
+              Send WhatSapp message</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9">
+            <div class="row">
+              <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">Category</h3>
+                <ul class="list-unstyled">
+                  <li><a href="/category/?q=entertainment">Entertainment</a></li>
+                  <li><a href="/category/?q=love">Love</a></li>
+                  <li><a href="/category/?q=Relationship">Relationship</a></li>
+                  <li><a href="/category/?q=education">Education</a></li>
+                  <li><a href="/category/?q=sports">Sports</a></li>
+                  <li><a href="/category/?q=beauty">Beauty</a></li>
+                  <li><a href="/category/?q=fitness">Fitness</a></li>
+                </ul>
+              </div>
+              <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">Other Category</h3>
+                <ul class="list-unstyled">
+                  <li><a href="/category/?q=mariage">Marriage</a></li>
+                  <li><a href="/category/?q=giveaway">GiveAway</a></li>
+                  <li><a href="/category/?q=books">Books &amp; Novel</a></li>
+                  <li><a href="/category/?q=drama">Drama</a></li>
+                  <li><a href="/category/?q=careers">Careers</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <h3 class="footer-heading mb-4">Contact Info</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="d-block text-white">Address</span>
+                Badagry, Lagos, Nigeria
+              </li>
+              <li>
+                <span class="d-block text-white">Telephone</span>
+                +2348131615393
+              </li>
+              <li>
+                <span class="d-block text-white">Email</span>
+                info@charlotte.com
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script data-cfasync="false"
+                src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              <!-- All Rights Reserved | This template is made with
+              <i class="icon-heart text-danger" aria-hidden="true"></i> by
+              <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <div class="fab" onclick="goUp()"><span class="txt text-white"><i class="icon-heart text-white"
+        aria-hidden="true"></i></span></div>
+
+  <script src="{% static 'index/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'index/js/popper.min.js' %}"></script>
+  <script src="{% static 'index/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'index/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'index/js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'index/js/aos.js' %}"></script>
+
+  <script src="{% static 'index/js/main.js' %}"></script>
+  <script type="text/javascript">
+    function getCategory() {
+      var value = document.getElementById('category-select');
+      var text = value.value;
+      window.location.replace('/category/?q=' + text)
+    };
+
+    function goUp() {
+      window.scroll(0, 0)
+    };
+  </script>
+</body>
+
+</html>
